@@ -10,8 +10,12 @@ read_and_sort() {
     DAY_NUMBER=$1
 
     FILE_NAME="./resources/${DAY_NUMBER}data.txt"
+
+    DEFAULT_IFS=$IFS
     
     IFS=$'\n' SORTED=($(sort -n <<< readarray -t a < ${FILE_NAME} | tr -d '\r'))
+
+    IFS=$DEFAULT_IFS
     
     echo ${SORTED[*]}
 
